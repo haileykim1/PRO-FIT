@@ -12,6 +12,9 @@ mpPose = mp.solutions.pose
 #클래스는 RGB이미지만 처리가능
 pose = mpPose.Pose()
 
+pTime = 0
+cTime = 0
+
 while(video.isOpened()):
     ret, img = video.read()
 
@@ -20,8 +23,25 @@ while(video.isOpened()):
     results = pose.process(imgRGB)
     #print(results)
 
+    #landmark 위치 출력
+    if results.pose_landmarks:
+        lm = results.pose_landmarks
+        for id, ldm in enumerate(lm.landmark):
+            height, width, channels = img.shape
+            #pixel단위 변환
+            cx, cy = int(ldm.x * width), int(ldm.y * height)
+            #landmark(33개 : 0~32)당 xyz위치
+            print(id, cx, cy)
+            #if id == ~ 으로 개별 processing
+
     mpDrawing.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
 
+    #프레임 계산 : 15~30 프레임정도 나옴
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+
+    cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_COMPLEX,3,(255, 0, 255), 3)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
