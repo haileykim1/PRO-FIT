@@ -17,23 +17,49 @@ pose = mpPose.Pose()
 
 
 body_height, body_upper_height, body_bottom_height = 0, 0, 0
-x0, y0, x29, y29, x30, y30, x11, y11, x12, y12, x23, y23, x24, y24 = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+x0, y0, x29, y29, x30, y30, x11, y11, x12, y12, x23, y23, x24, y24, x27, y27, x28, y28 = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
-#   'C:/mtest/test.mp4' -> 1066 * 480 / 인물 키 : 161cm
+#   'C:/mtest/test.mp4' -> 1066 * 480 / 약 310프레임 / 인물 키 : 161cm
 cap = cv2.VideoCapture('C:/mtest/test.mp4')
-fgbg = cv2.bgsegm.createBackgroundSubtractorMOG()
+#fgbg = cv2.bgsegm.createBackgroundSubtractorMOG()
+
+fgbg = cv2.createBackgroundSubtractorMOG2(detectShadows=True)
+fgbg.setVarThreshold(5)
+
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+#fgbg = cv2.bgsegm.createBackgroundSubtractorGMG()
+#fgbg.setDecisionThreshold(0.65)
+#fgbg.setDefaultLearningRate(0.15)
+#fgbg.setNumFrames(200)
+
+learning = cv2.VideoCapture('C:/mtest/test.mp4')
+learningcnt = 0
+
+while False:
+#while learning.isOpened():
+    print(learningcnt)
+    learningcnt += 1
+    ret, img = learning.read()
+    if ret == True and learningcnt <= 120:
+    #if ret == True:
+        fgmask = fgbg.apply(img)
+    else:
+        break
 
 
 ret, img = cap.read()
 height, width, channels = img.shape
+cnt = 0
 
 imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 results = pose.process(imgRGB)
 
 #pose detection될때 까지
-while x0 == 0:
-    print("iteration")
-    if results.pose_landmarks:
+while True:
+    ret, img = cap.read()
+
+    cnt += 1
+    if (results.pose_landmarks and cnt == 1):
         lm = results.pose_landmarks
         for id, ldm in enumerate(lm.landmark):
             if id == 0:
@@ -57,15 +83,15 @@ while x0 == 0:
             elif id == 28:
                 x28 = ldm.x
                 y28 = ldm.y
-    else:
-        print("not yet")
-
-
-    fgmask = fgbg.apply(img)
-    mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
-    cv2.imshow('fgbf subtracted', img)
-    if cv2.waitKey(0):
+    if ret == False:
         break
+    fgmask = fgbg.apply(img)
+    k = cv2.waitKey(30) & 0xff
+    if k == 27:
+        break
+#    mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
+    cv2.imshow('fgbf subtracted', fgmask)
+
 
 
 
