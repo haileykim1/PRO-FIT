@@ -14,6 +14,11 @@
 - 별도의 센서 없이 동영상 기반의 영상처리를 진행합니다
 - 사용자가 가상 피팅 뿐만 아니라 옷 등록이 가능합니다.
 
-## Activity Diagram
-![_Activity_Diagram](https://user-images.githubusercontent.com/49053341/116825307-a3cf9a80-abc9-11eb-8aaa-eda6d12dcbe5.png)
+##SW Architure
+![GP_systemArchitecture](https://user-images.githubusercontent.com/49053341/137588952-3c69bd2a-81fe-47fc-a107-b8b4d334e371.png)
+
+
+
+
+
 
