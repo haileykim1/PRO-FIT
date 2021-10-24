@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1087095158633",
+    "project_id": "pro-fit-4578b",
+    "storage_bucket": "pro-fit-4578b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087095158633:android:27aa09652d974dc9612ff8",
+        "android_client_info": {
+          "package_name": "com.teamfour.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087095158633-qr2a7c8fbhnb3ectjnc4kdc4r40b5ovo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR707S2pRnXqCZzrKLfuScDnxbkXtH62o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087095158633-qr2a7c8fbhnb3ectjnc4kdc4r40b5ovo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
