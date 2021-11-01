@@ -4,13 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.teamfour.myapplication.databinding.ActivityInitInfoBinding
 import kotlinx.android.synthetic.main.activity_init_info.*
 
-class InitInfoActivity : AppCompatActivity() {
+class InitInfoActivity : BaseActivity() {
+
+    val binding by lazy {ActivityInitInfoBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_init_info)
+        setContentView(binding.root)
 
         button.setOnClickListener{
 

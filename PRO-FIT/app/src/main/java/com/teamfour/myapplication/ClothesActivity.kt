@@ -2,10 +2,14 @@ package com.teamfour.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.teamfour.myapplication.databinding.ActivityClothesBinding
 
 class ClothesActivity : AppCompatActivity() {
+
+    val binding by lazy {ActivityClothesBinding.inflate(layoutInflater)}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_clothes)
+        setContentView(binding.root)
     }
 }
