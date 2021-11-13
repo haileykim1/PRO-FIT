@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.teamfour.myapplication.databinding.ActivityProfileBinding
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : BaseActivity() {
 
     val binding by lazy {ActivityProfileBinding.inflate(layoutInflater)}
 

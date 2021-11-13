@@ -18,18 +18,25 @@ class InitInfoActivity : BaseActivity() {
         button.setOnClickListener{
 
             //이름, 신장 부분 입력했는지 확인.
-            if((nameEdit.text.isEmpty()) || (heightEdit.text.isEmpty())){
+            if((binding.nameEdit.text.isEmpty()) || (binding.heightEdit.text.isEmpty())){
                 Toast.makeText(this, "초기 정보를 전부 입력해주세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             //정보 Local에 저장
+            saveInfo(binding.nameEdit.text.toString(), binding.heightEdit.text.toString())
             //코드부분
 
             nextActivity()
 
         }
 
+    }
+
+    private fun saveInfo(name: String, height: String){
+        val userInfo = UserInfo(this)
+        userInfo.set(UserInfo.NAME, name)
+        userInfo.set(UserInfo.NAME_PASSED, "true")
     }
 
     private fun nextActivity(){

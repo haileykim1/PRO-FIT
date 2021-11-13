@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.Window
+import android.widget.Toast
 import com.teamfour.myapplication.databinding.ActivitySplashBinding
 
 class SplashActivity : BaseActivity() {
@@ -17,9 +18,13 @@ class SplashActivity : BaseActivity() {
         //GlobalContext.setContext(this)
 
         //2초동안 기다렸다가 정보 입력 여부에 따라 다음 액티비티로 넘어감
+        val userInfo = UserInfo(this)
+
         Handler().postDelayed({
-            val intent: Intent = if(false) {
-            Intent(this, MainActivity::class.java)
+            val intent: Intent = if(userInfo.has(UserInfo.NAME_PASSED) && (userInfo.get(UserInfo.NAME_PASSED) == "true") == true ) {
+                //val welcomeMessage = userInfo.get(UserInfo.NAME)!!.toString() + "님 환영합니다."
+                //Toast.makeText(this, welcomeMessage, Toast.LENGTH_SHORT)
+                Intent(this, VirtualFittingActivity::class.java)
             }else{
                 Intent(this, InitInfoActivity::class.java)
             }

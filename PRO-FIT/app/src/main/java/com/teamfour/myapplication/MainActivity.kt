@@ -20,8 +20,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun Init(){
-        //val intent = Intent(this, VirtualFittingActivity::class.java)
-        //startActivity(intent)
+
     }
 
 
