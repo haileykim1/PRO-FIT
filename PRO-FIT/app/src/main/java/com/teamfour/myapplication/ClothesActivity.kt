@@ -11,5 +11,7 @@ class ClothesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        setTitle("CLOTHES")
     }
 }

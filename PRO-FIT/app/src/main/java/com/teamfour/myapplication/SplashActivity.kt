@@ -17,6 +17,8 @@ class SplashActivity : BaseActivity() {
         setContentView(binding.root)
         //GlobalContext.setContext(this)
 
+        supportActionBar!!.hide()
+
         //2초동안 기다렸다가 정보 입력 여부에 따라 다음 액티비티로 넘어감
         val userInfo = UserInfo(this)
 
