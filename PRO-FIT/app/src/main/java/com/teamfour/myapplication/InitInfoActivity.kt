@@ -37,7 +37,7 @@ class InitInfoActivity : BaseActivity() {
     }
 
     private fun saveInfo(name: String, height: String){
-        val userInfo = UserInfo(this)
+        val userInfo = UserInfo()
         userInfo.set(UserInfo.NAME, name)
         userInfo.set(UserInfo.NAME_PASSED, "true")
     }

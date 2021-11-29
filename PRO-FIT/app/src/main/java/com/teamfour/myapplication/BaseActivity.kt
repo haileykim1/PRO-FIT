@@ -23,12 +23,12 @@ open class BaseActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item1 -> {
-                val intent = Intent(this, VirtualFittingActivity::class.java)
+                val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
                 true
             }
             R.id.item2 -> {
-                val intent = Intent(this, ProfileActivity::class.java)
+                val intent = Intent(this, VirtualFittingActivity::class.java)
                 startActivity(intent)
                 true
             }

@@ -20,7 +20,7 @@ class SplashActivity : BaseActivity() {
         supportActionBar!!.hide()
 
         //2초동안 기다렸다가 정보 입력 여부에 따라 다음 액티비티로 넘어감
-        val userInfo = UserInfo(this)
+        val userInfo = UserInfo()
 
         Handler().postDelayed({
             val intent: Intent = if(userInfo.has(UserInfo.NAME_PASSED) && (userInfo.get(UserInfo.NAME_PASSED) == "true") == true ) {

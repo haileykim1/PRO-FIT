@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="사용할 영상을 선택해 주세요"
         android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_gravity="center"/>
 
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="새로 만들기"
         android:layout_marginTop="120dp"
         />
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="저장소에서 선택하기"
         android:layout_marginTop="80dp"
         />
