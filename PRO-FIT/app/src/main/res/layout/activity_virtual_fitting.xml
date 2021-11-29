@@ -8,20 +8,59 @@
     android:layout_gravity="center_vertical"
     android:orientation="vertical">
 
+    <!--
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"/>
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용할 영상을 선택해 주세요"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="새로 만들기"
+        android:layout_marginTop="120dp"
+        />
+
     <Button
         android:id="@+id/addVideoBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/ic_baseline_add_circle_outline_24"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="저장소에서 선택하기"
+        android:layout_marginTop="80dp"
+        />
+
+    <Button
+        android:id="@+id/selectVideoBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_baseline_attach_file_24"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/virtualRcyView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp"/>
+
 
 
 </LinearLayout>

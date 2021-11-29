@@ -24,8 +24,9 @@ class SplashActivity : BaseActivity() {
 
         Handler().postDelayed({
             val intent: Intent = if(userInfo.has(UserInfo.NAME_PASSED) && (userInfo.get(UserInfo.NAME_PASSED) == "true") == true ) {
-                //val welcomeMessage = userInfo.get(UserInfo.NAME)!!.toString() + "님 환영합니다."
-                //Toast.makeText(this, welcomeMessage, Toast.LENGTH_SHORT)
+                val welcomeMessage = userInfo.get(UserInfo.NAME)!!.toString() + "님 환영합니다."
+                Toast.makeText(applicationContext, welcomeMessage, Toast.LENGTH_SHORT).show()
+
                 Intent(this, VirtualFittingActivity::class.java)
             }else{
                 Intent(this, InitInfoActivity::class.java)

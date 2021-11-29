@@ -1,15 +1,27 @@
 package com.teamfour.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.text.TextUtils
+import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
+import android.widget.VideoView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.teamfour.myapplication.databinding.ActivityVirtualFittingBinding
+import kotlinx.android.synthetic.main.activity_virtual_fitting.*
 
 class VirtualFittingActivity : BaseActivity() {
 
     val binding by lazy {ActivityVirtualFittingBinding.inflate(layoutInflater)}
-    lateinit var rcyAdapter:VirtualFittingVideoAdapter
+    val REQUEST_VIDEO_CAPTURE = 1
+    var videoUri:Uri? = null
+    val REQUEST_VIDEO_GALLERY = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +33,49 @@ class VirtualFittingActivity : BaseActivity() {
     }
 
     private fun init(){
-        binding.virtualRcyView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rcyAdapter = VirtualFittingVideoAdapter()
-        //클릭 했을때 이벤트
 
-        binding.virtualRcyView.adapter = rcyAdapter
-
+        //새 영상 녹화
         binding.addVideoBtn.setOnClickListener {
-            //새 동영상 촬영
+            Toast.makeText(applicationContext,"영상에 전신이 나오도록 해주세요", Toast.LENGTH_LONG ).show()
+
+            dispatchTakeVideoIntent()
+
         }
 
+        //외부 스토리지에서 영상 선택
+        binding.selectVideoBtn.setOnClickListener {
+            var intent = Intent(Intent.ACTION_PICK)
+            intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            intent.type = "video/*"
+            startActivityForResult(intent, REQUEST_VIDEO_GALLERY)
+        }
+    }
+
+    private fun dispatchTakeVideoIntent(){
+
+        Intent(MediaStore.ACTION_VIDEO_CAPTURE).also{ videoIntent ->
+            videoIntent.resolveActivity(packageManager)?.also{
+
+                startActivityForResult(videoIntent, REQUEST_VIDEO_CAPTURE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?){
+        super.onActivityResult(requestCode, resultCode, intent)
+
+        if(resultCode == RESULT_OK){
+
+            when(requestCode){
+                REQUEST_VIDEO_GALLERY, REQUEST_VIDEO_CAPTURE ->{
+                    videoUri= intent?.data!!
+                    //videoView.setVideoURI(videoUri)
+                    //binding.videoView.start()
+                }
+            }
+        }
+
+        //영상 출력 성공 확인
     }
 
 }
