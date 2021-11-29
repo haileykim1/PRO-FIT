@@ -27,6 +27,9 @@ class InitInfoActivity : BaseActivity() {
             saveInfo(binding.nameEdit.text.toString(), binding.heightEdit.text.toString())
             //코드부분
 
+            val welcomeMessage = binding.nameEdit.text.toString() + "님 환영합니다."
+            Toast.makeText(applicationContext, welcomeMessage, Toast.LENGTH_SHORT).show()
+
             nextActivity()
 
         }

@@ -2,19 +2,10 @@ package com.teamfour.myapplication
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.text.TextUtils
-import android.util.Log
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
-import android.widget.VideoView
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.teamfour.myapplication.databinding.ActivityVirtualFittingBinding
-import kotlinx.android.synthetic.main.activity_virtual_fitting.*
 
 class VirtualFittingActivity : BaseActivity() {
 
@@ -71,6 +62,11 @@ class VirtualFittingActivity : BaseActivity() {
                     videoUri= intent?.data!!
                     //videoView.setVideoURI(videoUri)
                     //binding.videoView.start()
+
+                    //옷 고르기 액티비티로 넘어감
+                    var intent: Intent = Intent(this, VirtualFittingClothesActivity::class.java)
+                    intent.putExtra("videoUri", videoUri)
+                    startActivity(intent)
                 }
             }
         }
