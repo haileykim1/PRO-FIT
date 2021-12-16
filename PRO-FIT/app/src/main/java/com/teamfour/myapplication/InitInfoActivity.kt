@@ -43,7 +43,7 @@ class InitInfoActivity : BaseActivity() {
     }
 
     private fun nextActivity(){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, VirtualFittingActivity::class.java)
         startActivity(intent)
         finish()
     }

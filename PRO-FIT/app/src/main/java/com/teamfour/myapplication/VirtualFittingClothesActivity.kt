@@ -49,7 +49,9 @@ class VirtualFittingClothesActivity : BaseActivity() {
     }
 
     private fun startProcessing(){
-        Toast.makeText(this, "가상피팅 처리", Toast.LENGTH_LONG).show()
+        var intent: Intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("option", clothesNum)
+        startActivity(intent)
     }
 
 }
